@@ -1,0 +1,21 @@
+version: '2'
+services:
+  jupyter:
+    image: jupyter/base-notebook
+    environment:
+      VIRTUAL_HOST: jupyter.dev1.dh.unimaas.nl
+      VIRTUAL_PORT: 8888
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/home/jovyan/work
+    networks:
+      default:
+        aliases:
+          - jupyter.dh.local
+      common_default:
+        aliases:
+          - jupyter.dh.local
+
+networks:
+  common_default:
+    external: true
