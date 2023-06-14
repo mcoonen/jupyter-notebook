@@ -31,9 +31,6 @@ USER jovyan
 
 # Install some common python packages
 # TODO: Think about a better way. E.g. looping over the requirements.txt files in the different notebook folders to install the required packages.
-RUN pip install \
-    openpyxl \
-    pandas \
-    pyodbc \ 
-    plotly
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
